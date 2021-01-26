@@ -1,14 +1,64 @@
-<ng-container *ngIf="isAuthenticated(); else unauthenticated">
-  <app-side-nav-outer-toolbar title="{{appInfo.title}}">
-    <router-outlet></router-outlet>
-    <app-footer>
-      Copyright © 2011-{{appInfo.currentYear}} {{appInfo.title}} Inc.
-      <br/>
-      All trademarks or registered trademarks are property of their respective owners.
-    </app-footer>
-  </app-side-nav-outer-toolbar>
-</ng-container>
+<div class="long-title">
+  <h3>DXCinema Upcoming Movies</h3>
+</div>
+<dx-scheduler
+  id="scheduler"
+  [dataSource]="data"
+  [views]="['day', 'timelineDay']"
+  currentView="day"
+  [firstDayOfWeek]="0"
+  [startDayHour]="9"
+  [endDayHour]="23"
+  [showAllDayPanel]="false"
+  [currentDate]="currentDate"
+  [crossScrollingEnabled]="true"
+  [cellDuration]="20"
+  [height]="600"
+  (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
+>
+  <dxo-editing [allowAdding]="false"></dxo-editing>
 
-<ng-template #unauthenticated>
-  <app-unauthenticated-content></app-unauthenticated-content>
-</ng-template>
+  <div *dxTemplate="let model of 'appointment-template'">
+    <div class="showtime-preview">
+      <div>{{getMovieById(model.appointmentData.movieId).text}}</div>
+      <div>
+        Ticket Price:
+        <strong>{{"$" + model.appointmentData.price}}</strong>
+      </div>
+      <div class="dropdown-appointment-dates">
+        {{(model.appointmentData.startDate | date:'shortTime') + ' - ' +
+        (model.appointmentData.endDate | date:'shortTime')}}
+      </div>
+    </div>
+  </div>
+
+  <div *dxTemplate="let model of 'tooltip-template'"></div>
+</dx-scheduler>
+<dx-popup [(visible)]="isCustomPopupVisible">
+  <div *dxTemplate="let data of 'content'">
+    <div>
+      <b>{{editAppointmentData.text}}</b>
+    </div>
+  </div>
+
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+            text: 'Confirm',
+            onClick: confirmSelection
+        }"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+            text: 'Cancel',
+            onClick: cancelSelection
+        }"
+  >
+  </dxi-toolbar-item>
+</dx-popup>
