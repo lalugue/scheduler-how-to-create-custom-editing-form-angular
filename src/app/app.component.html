@@ -34,11 +34,9 @@
 
   <div *dxTemplate="let model of 'tooltip-template'"></div>
 </dx-scheduler>
-<dx-popup [(visible)]="isCustomPopupVisible">
+<dx-popup [(visible)]="isCustomPopupVisible" [title]="editAppointmentData.text">
   <div *dxTemplate="let data of 'content'">
-    <div>
-      <b>{{editAppointmentData.text}}</b>
-    </div>
+    <img src={{editAppointmentData.image}} class='dx-field-label'>    
   </div>
 
   <dxi-toolbar-item
