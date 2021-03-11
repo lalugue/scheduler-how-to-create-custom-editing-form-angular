@@ -36,7 +36,9 @@
 </dx-scheduler>
 <dx-popup [(visible)]="isCustomPopupVisible" [title]="editAppointmentData.text">
   <div *dxTemplate="let data of 'content'">
-    <img src={{editAppointmentData.image}} class='dx-field-label'>    
+    <dx-scroll-view width="100%" height="100%">
+      <img src={{editAppointmentData.image}} class='dx-field-label'>
+    </dx-scroll-view>    
   </div>
 
   <dxi-toolbar-item
