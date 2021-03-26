@@ -32,8 +32,8 @@ export class AppComponent  {
   constructor(service: Service) {
     this.data = service.getData();
 
-    this.rows = ["A", "B", "C", "D"];
-    this.seats = [1, 2, 3, 4, 5];    
+    this.rows = service.getRows();
+    this.seats = service.getSeats();    
   }
 
   onAppointmentFormOpening = (e) => {

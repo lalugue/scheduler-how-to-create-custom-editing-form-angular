@@ -51,4 +51,12 @@ export class Service {
     getData() {
         return data;
     }
+
+    getRows(){
+        return ["A", "B", "C", "D"];
+    }
+
+    getSeats(){
+        return [1, 2, 3, 4, 5];
+    }
 }
