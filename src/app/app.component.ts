@@ -16,13 +16,11 @@ export class AppComponent {
 
   data: Data[];
   currentDate: Date = new Date(2015, 4, 25);
-  movieInfo: any;
 
   isCustomPopupVisible: boolean = false;
   editAppointmentData: any = {};
   rows: any;
-  seats: any;
-  toolbarItems: any;
+  seats: any;  
 
   formatDate = formatDate;
 
@@ -32,17 +30,17 @@ export class AppComponent {
     this.seats = service.getSeats();
   }
 
-  onAppointmentFormOpening = (e) => {
+  onAppointmentFormOpening(e){
     e.cancel = true;
     this.editAppointmentData = { ...e.appointmentData };
     this.isCustomPopupVisible = true;
   };
 
-  onHiding = (e) => {
+  onHiding(e){
     this.editAppointmentData = {};
   };
 
-  updateAppointment = (e) => {
+  updateAppointment(){
     let oldAppointmentData = this.data.find((e) => {
       return e.id == this.editAppointmentData.id;
     });
@@ -61,9 +59,6 @@ export class AppComponent {
     this.isCustomPopupVisible = false;
   };
 
-  cancelSelection = (e) => {
-    this.isCustomPopupVisible = false;
-  };
 
   setSeatPrice(basePrice, row) {
     let rowPrice;
