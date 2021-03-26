@@ -36,6 +36,8 @@
   <div *dxTemplate="let model of 'tooltip-template'"></div>
 </dx-scheduler>
 <dx-popup
+  [width]="500"
+  [closeOnOutsideClick]="true"
   [(visible)]="isCustomPopupVisible"
   [title]="editAppointmentData.text"
   (onHiding)="onHiding($event)"
