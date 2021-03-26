@@ -21,6 +21,7 @@ export class AppComponent  {
 
   /**Custom Popup Items**/
   isCustomPopupVisible: boolean = false;
+  //oldAppointmentData: any = {};
   editAppointmentData: any = {};
   rows: any;
   seats: any;
@@ -36,22 +37,25 @@ export class AppComponent  {
   }
 
   onAppointmentFormOpening = (e) => {
-    e.cancel = true;
-
+    e.cancel = true;    
     this.editAppointmentData = {...e.appointmentData};
+    //this.oldAppointmentData = {...this.editAppointmentData};
     console.log(this.editAppointmentData);
     this.isCustomPopupVisible = true;
   };
 
-  onHiding = (e) => {
-    console.log(this.editAppointmentData);
+  onHiding = (e) => {    
+    //this.oldAppointmentData = {};
     this.editAppointmentData = {};
   };
 
-  updateAppointment = (e) => {
-    
-
-    this.isCustomPopupVisible = false;
+  updateAppointment = (e) => {    
+    let oldAppointmentData = this.data.find(e=>{      
+      return e.id == this.editAppointmentData.id
+    });    
+    this.scheduler.instance.updateAppointment(oldAppointmentData, this.editAppointmentData);
+    notify("Selected seat " + this.editAppointmentData.seatRow + this.editAppointmentData.seatNumber + " for " + this.editAppointmentData.text + ". Enjoy!");
+    this.isCustomPopupVisible = false;    
   };
 
   cancelSelection = (e) => {
