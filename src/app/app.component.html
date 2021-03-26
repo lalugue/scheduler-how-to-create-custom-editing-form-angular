@@ -47,7 +47,32 @@
         <br/>
 
         <div class='dx-field-label'><b>Price ($): </b></div>
-        <div id='priceView' class='dx-field-label'>{{editAppointmentData.seatPrice ? editAppointmentData.seatPrice : "Pick a seat for pricing"}}</div><br/><br/>
+        <div id='priceView' class='dx-field-label'>{{editAppointmentData.seatRow && editAppointmentData.seatNumber ? setSeatPrice(editAppointmentData.price, editAppointmentData.seatRow) : "Pick a seat for pricing"}}</div>
+        
+        <br/><br/>
+
+        <dx-select-box 
+          id='rowView' 
+          class='dx-field-label'
+          [dataSource]="rows"
+          [width]="400"
+          placeHolder="Pick a row"
+          [(value)]="editAppointmentData.seatRow">
+        </dx-select-box>
+        
+        <br/><br/>
+
+        <dx-select-box 
+          id='seatView'
+          class='dx-field-label'
+          [dataSource]="seats"
+          [width]="400"
+          placeHolder="Pick a seat"
+          [(value)]="editAppointmentData.seatNumber"
+          >
+        </dx-select-box>
+        
+        <br/><br/>
 
 
     </dx-scroll-view>    
