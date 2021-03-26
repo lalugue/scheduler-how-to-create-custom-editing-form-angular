@@ -4,6 +4,7 @@ import { Service, Data } from "./app.service";
 import Query from "devextreme/data/query";
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { ViewChild } from '@angular/core';
+import { formatDate } from "devextreme/localization";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,6 +27,8 @@ export class AppComponent  {
   toolbarItems: any;
   selectedRow: any;
   selectedSeat: any;
+
+  formatDate = formatDate;
 
   constructor(service: Service) {
     this.data = service.getData();
