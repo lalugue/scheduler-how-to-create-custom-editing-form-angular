@@ -42,9 +42,14 @@ export class AppComponent  {
   onAppointmentFormOpening = (e) => {
     e.cancel = true;
 
-    this.editAppointmentData = e.appointmentData;
+    this.editAppointmentData = {...e.appointmentData};
     console.log(this.editAppointmentData);
     this.isCustomPopupVisible = true;
+  };
+
+  onHiding = (e) => {
+    console.log(this.editAppointmentData);
+    this.editAppointmentData = {};
   };
 
   confirmSelection = (e) => {
