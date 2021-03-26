@@ -4,19 +4,21 @@
 <dx-scheduler
   id="scheduler"
   [dataSource]="data"
-  [views]="['day', 'timelineDay']"
+  [views]="['day', 'timelineDay']"  
   currentView="day"
+  [currentDate]="currentDate"  
   [firstDayOfWeek]="0"
   [startDayHour]="9"
   [endDayHour]="23"
-  [showAllDayPanel]="false"
-  [currentDate]="currentDate"
-  [crossScrollingEnabled]="true"
-  [cellDuration]="20"
+  [showAllDayPanel]="false" 
   [height]="600"
   (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
 >
-  <dxo-editing [allowAdding]="false"></dxo-editing>
+  <dxo-editing
+    [allowResizing]="false"
+    [allowDragging]="false"
+    >
+  </dxo-editing>
 
   <div *dxTemplate="let model of 'appointment-template'">
     <div class="showtime-preview">
