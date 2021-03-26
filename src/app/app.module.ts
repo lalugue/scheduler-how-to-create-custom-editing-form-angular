@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DxPopupModule, DxSchedulerModule, DxScrollViewModule } from 'devextreme-angular';
+import { DxPopupModule, DxSchedulerModule, DxScrollViewModule, DxSelectBoxModule } from 'devextreme-angular';
 @NgModule({
   declarations: [
     AppComponent
@@ -11,7 +11,8 @@ import { DxPopupModule, DxSchedulerModule, DxScrollViewModule } from 'devextreme
     BrowserModule,
     DxSchedulerModule,
     DxPopupModule,
-    DxScrollViewModule
+    DxScrollViewModule,
+    DxSelectBoxModule
   ], 
   bootstrap: [AppComponent]
 })
