@@ -38,6 +38,9 @@
   <div *dxTemplate="let data of 'content'">
     <dx-scroll-view width="100%" height="100%">
       <img src={{editAppointmentData.image}} class='dx-field-label'>
+      <div class='dx-field-label'><p><b>{{editAppointmentData.text}}</b></p>
+        <p>Year: {{editAppointmentData.year}}</p> 
+        <p>Duration: {{editAppointmentData.duration}} minutes</p></div>
     </dx-scroll-view>    
   </div>
 
