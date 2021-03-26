@@ -28,6 +28,8 @@ export class AppComponent {
     this.data = service.getData();
     this.rows = service.getRows();
     this.seats = service.getSeats();
+
+    this.updateAppointment = this.updateAppointment.bind(this);
   }
 
   onAppointmentFormOpening(e){
