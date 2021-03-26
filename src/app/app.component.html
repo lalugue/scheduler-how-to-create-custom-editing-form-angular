@@ -12,8 +12,7 @@
   [endDayHour]="23"
   [showAllDayPanel]="false"
   [height]="600"
-  (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
->
+  (onAppointmentFormOpening)="onAppointmentFormOpening($event)">
   <dxo-editing [allowResizing]="false" [allowDragging]="false"></dxo-editing>
 
   <div *dxTemplate="let model of 'appointment-template'">
@@ -41,10 +40,11 @@
   [closeOnOutsideClick]="true"
   [(visible)]="isCustomPopupVisible"
   [title]="editAppointmentData.text"
-  (onHiding)="onHiding($event)"
->
+  (onHiding)="onHiding($event)">
   <div *dxTemplate="let data of 'content'">
-    <dx-scroll-view width="100%" height="100%">
+    <dx-scroll-view 
+      width="100%" 
+      height="100%">
       <img src="{{ editAppointmentData.image }}" class="dx-field-label" />
       <div class="dx-field-label">
         <p>
@@ -81,8 +81,7 @@
         [dataSource]="rows"
         [width]="400"
         placeHolder="Pick a row"
-        [(value)]="editAppointmentData.seatRow"
-      >
+        [(value)]="editAppointmentData.seatRow">
       </dx-select-box>
 
       <br /><br />
@@ -93,8 +92,7 @@
         [dataSource]="seats"
         [width]="400"
         placeHolder="Pick a seat"
-        [(value)]="editAppointmentData.seatNumber"
-      >
+        [(value)]="editAppointmentData.seatNumber">
       </dx-select-box>
 
       <br /><br />
@@ -108,7 +106,6 @@
     [options]="{
       text: 'OK',
       onClick: updateAppointment
-    }"
-  >
+    }">
   </dxi-toolbar-item>
 </dx-popup>
