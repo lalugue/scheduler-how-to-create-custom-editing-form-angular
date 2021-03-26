@@ -46,6 +46,9 @@
         <div class='dx-field-label'><b>{{formatDate(editAppointmentData.startDate, "shortTime")}} - {{formatDate(editAppointmentData.endDate, "shortTime")}}</b></div>
         <br/>
 
+        <div class='dx-field-label'><b>Price ($): </b></div>
+        <div id='priceView' class='dx-field-label'>{{editAppointmentData.seatPrice ? editAppointmentData.seatPrice : "Pick a seat for pricing"}}</div><br/><br/>
+
 
     </dx-scroll-view>    
   </div>
