@@ -34,11 +34,11 @@ export class AppComponent {
     e.cancel = true;
     this.editAppointmentData = { ...e.appointmentData };
     this.isCustomPopupVisible = true;
-  };
+  }
 
   onHiding(e){
     this.editAppointmentData = {};
-  };
+  }
 
   updateAppointment(){
     let oldAppointmentData = this.data.find((e) => {
@@ -57,8 +57,7 @@ export class AppComponent {
         '. Enjoy!'
     );
     this.isCustomPopupVisible = false;
-  };
-
+  }
 
   setSeatPrice(basePrice, row) {
     let rowPrice;
