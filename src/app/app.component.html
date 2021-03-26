@@ -14,16 +14,16 @@
   [height]="600"
   (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
 >
-  <dxo-editing [allowResizing]="false" [allowDragging]="false"> </dxo-editing>
+  <dxo-editing [allowResizing]="false" [allowDragging]="false"></dxo-editing>
 
   <div *dxTemplate="let model of 'appointment-template'">
-    <div class="showtime-preview">
+    <div>
       <div>{{ getMovieById(model.appointmentData.movieId).text }}</div>
       <div>
         Ticket Price:
         <strong>{{ "$" + model.appointmentData.price }}</strong>
       </div>
-      <div class="dropdown-appointment-dates">
+      <div>
         {{
           (model.appointmentData.startDate | date: "shortTime") +
             " - " +
@@ -35,6 +35,7 @@
 
   <div *dxTemplate="let model of 'tooltip-template'"></div>
 </dx-scheduler>
+
 <dx-popup
   [width]="500"
   [closeOnOutsideClick]="true"
@@ -49,17 +50,15 @@
         <p>
           <b>{{ editAppointmentData.text }}</b>
         </p>
-
         <p>Year: {{ editAppointmentData.year }}</p>
         <p>Duration: {{ editAppointmentData.duration }} minutes</p>
       </div>
 
       <div class="dx-field-label">
-        <b
-          >{{ formatDate(editAppointmentData.startDate, "shortTime") }} -
-          {{ formatDate(editAppointmentData.endDate, "shortTime") }}</b
-        >
+        <b>{{ formatDate(editAppointmentData.startDate, "shortTime") }} -
+          {{ formatDate(editAppointmentData.endDate, "shortTime") }}</b>
       </div>
+
       <br />
 
       <div class="dx-field-label"><b>Price ($): </b></div>
