@@ -33,7 +33,7 @@ export class AppComponent  {
   constructor(service: Service) {
     this.data = service.getData();
 
-    this.rows = ["A", "B", "C", "D", "E"];
+    this.rows = ["A", "B", "C", "D"];
     this.seats = [1, 2, 3, 4, 5];
     this.selectedRow = "A";
     this.selectedSeat = 1;
@@ -60,4 +60,19 @@ export class AppComponent  {
   cancelSelection = (e) => {
     this.isCustomPopupVisible = false;
   };
+
+  setSeatPrice(basePrice, row){
+    let rowPrice;
+    if(row == 'A')
+      rowPrice = 1;
+    else if(row == 'B')
+      rowPrice = 2;
+    else if(row == 'C')
+      rowPrice = 3;
+    else if(row == 'D')
+      rowPrice = 4;
+    
+    return basePrice * rowPrice;
+  }
+
 }
