@@ -25,8 +25,6 @@ export class AppComponent  {
   rows: any;
   seats: any;
   toolbarItems: any;
-  selectedRow: any;
-  selectedSeat: any;
 
   formatDate = formatDate;
 
@@ -34,9 +32,7 @@ export class AppComponent  {
     this.data = service.getData();
 
     this.rows = ["A", "B", "C", "D"];
-    this.seats = [1, 2, 3, 4, 5];
-    this.selectedRow = "A";
-    this.selectedSeat = 1;
+    this.seats = [1, 2, 3, 4, 5];    
   }
 
   onAppointmentFormOpening = (e) => {
@@ -52,12 +48,8 @@ export class AppComponent  {
     this.editAppointmentData = {};
   };
 
-  confirmSelection = (e) => {
-    notify(
-      `Seat reserved: ${this.selectedRow}-${this.selectedSeat}`,
-      "success",
-      500
-    );
+  updateAppointment = (e) => {
+    
 
     this.isCustomPopupVisible = false;
   };
