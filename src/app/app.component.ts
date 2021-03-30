@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import notify from 'devextreme/ui/notify';
 import { Service, Data } from './app.service';
 import { DxSchedulerComponent } from 'devextreme-angular';
