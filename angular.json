@@ -3,35 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "scheduler-custom-appointment-form": {
+    "Angular": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true
-        },
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:module": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -39,7 +13,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/scheduler-custom-appointment-form",
+            "allowedCommonJsDependencies": [
+              "devextreme",
+              "devextreme-angular"
+            ],
+            "outputPath": "dist/Angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,7 +44,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -74,8 +51,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "4mb",
-                  "maximumError": "6mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -89,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "scheduler-custom-appointment-form:build"
+            "browserTarget": "Angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "scheduler-custom-appointment-form:build:production"
+              "browserTarget": "Angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "scheduler-custom-appointment-form:build"
+            "browserTarget": "Angular:build"
           }
         },
         "test": {
@@ -115,7 +92,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -137,16 +114,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "scheduler-custom-appointment-form:serve"
+            "devServerTarget": "Angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "scheduler-custom-appointment-form:serve:production"
+              "devServerTarget": "Angular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "scheduler-custom-appointment-form"
+  "defaultProject": "Angular"
 }
