@@ -45,21 +45,23 @@ export class AppComponent {
   }
 
   updateAppointment(){
-    let oldAppointmentData = this.data.find((e) => {
-      return e.id == this.editAppointmentData.id;
-    });
-    this.scheduler.instance.updateAppointment(
-      oldAppointmentData,
-      this.editAppointmentData
-    );
-    notify(
-      'Selected seat ' +
-        this.editAppointmentData.seatRow +
-        this.editAppointmentData.seatNumber +
-        ' for ' +
-        this.editAppointmentData.text +
-        '. Enjoy!'
-    );
+    if(this.editAppointmentData.seatRow && this.editAppointmentData.seatNumber){
+      let oldAppointmentData = this.data.find((e) => {
+        return e.id == this.editAppointmentData.id;
+      });
+      this.scheduler.instance.updateAppointment(
+        oldAppointmentData,
+        this.editAppointmentData
+      );    
+      notify(
+        'Selected seat ' +
+          this.editAppointmentData.seatRow +
+          this.editAppointmentData.seatNumber +
+          ' for ' +
+          this.editAppointmentData.text +
+          '. Enjoy!'
+      );
+    }
     this.isCustomPopupVisible = false;
   }
 
