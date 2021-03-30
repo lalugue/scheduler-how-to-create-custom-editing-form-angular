@@ -1,11 +1,11 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
-    return browser.get('/');
+  async navigateTo(): Promise<unknown> {
+    return browser.get(browser.baseUrl);
   }
 
-  getParagraphText() {
-    return element(by.css('app-root .dx-drawer-content .dx-card p:nth-child(2)')).getText();
+  async getTitleText(): Promise<string> {
+    return element(by.css('app-root .content span')).getText();
   }
 }
