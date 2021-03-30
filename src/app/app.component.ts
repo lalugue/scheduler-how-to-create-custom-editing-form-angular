@@ -34,8 +34,10 @@ export class AppComponent {
 
   onAppointmentFormOpening(e){
     e.cancel = true;
-    this.editAppointmentData = { ...e.appointmentData };
-    this.isCustomPopupVisible = true;
+    this.editAppointmentData = { ...e.appointmentData };    
+    if(this.editAppointmentData.id){
+      this.isCustomPopupVisible = true;
+    }
   }
 
   onHiding(e){
