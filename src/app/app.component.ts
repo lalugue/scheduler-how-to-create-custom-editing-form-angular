@@ -51,14 +51,7 @@ export class AppComponent {
         oldAppointmentData,
         this.editAppointmentData
       );    
-      notify(
-        'Selected seat ' +
-          this.editAppointmentData.seatRow +
-          this.editAppointmentData.seatNumber +
-          ' for ' +
-          this.editAppointmentData.text +
-          '. Enjoy!'
-      );
+      notify(`Selected seat ${this.editAppointmentData.seatRow}${this.editAppointmentData.seatNumber} for ${this.editAppointmentData.text}. Enjoy!`);
     }
     this.isCustomPopupVisible = false;
   }
