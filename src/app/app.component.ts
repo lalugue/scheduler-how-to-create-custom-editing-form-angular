@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import notify from 'devextreme/ui/notify';
 import { Service, Data } from './app.service';
 import { DxSchedulerComponent } from 'devextreme-angular';
@@ -46,32 +46,34 @@ export class AppComponent {
 
   updateAppointment(){
     if(this.editAppointmentData.seatRow && this.editAppointmentData.seatNumber){
-      let oldAppointmentData = this.data.find((e) => {
-        return e.id == this.editAppointmentData.id;
-      });
+      let oldAppointmentData = this.data.find(item=>item.id === this.editAppointmentData.id);
       this.scheduler.instance.updateAppointment(
         oldAppointmentData,
         this.editAppointmentData
       );    
-      notify(
-        'Selected seat ' +
-          this.editAppointmentData.seatRow +
-          this.editAppointmentData.seatNumber +
-          ' for ' +
-          this.editAppointmentData.text +
-          '. Enjoy!'
-      );
+      notify(`Selected seat ${this.editAppointmentData.seatRow}${this.editAppointmentData.seatNumber} for ${this.editAppointmentData.text}. Enjoy!`);
     }
     this.isCustomPopupVisible = false;
   }
 
   setSeatPrice(basePrice, row) {
     let rowPrice;
-    if (row == 'A') rowPrice = 1;
-    else if (row == 'B') rowPrice = 2;
-    else if (row == 'C') rowPrice = 3;
-    else if (row == 'D') rowPrice = 4;
-
+    switch(row){
+      case 'A':
+        rowPrice = 1;
+        break;
+      case 'B':
+        rowPrice = 2;
+        break;
+      case 'C':
+        rowPrice = 3;
+        break;
+      case 'D':
+        rowPrice = 4;
+        break;
+      default:
+        break;
+    }
     return basePrice * rowPrice;
   }
 }
