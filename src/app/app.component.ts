@@ -46,7 +46,7 @@ export class AppComponent {
 
   updateAppointment(){
     if(this.editAppointmentData.seatRow && this.editAppointmentData.seatNumber){
-      let oldAppointmentData = this.data.find(e=>e.id === this.editAppointmentData.id);
+      let oldAppointmentData = this.data.find(item=>item.id === this.editAppointmentData.id);
       this.scheduler.instance.updateAppointment(
         oldAppointmentData,
         this.editAppointmentData
