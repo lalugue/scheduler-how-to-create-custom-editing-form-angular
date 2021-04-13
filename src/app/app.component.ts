@@ -58,10 +58,22 @@ export class AppComponent {
 
   setSeatPrice(basePrice, row) {
     let rowPrice;
-    if (row == 'A') rowPrice = 1;
-    else if (row == 'B') rowPrice = 2;
-    else if (row == 'C') rowPrice = 3;
-    else if (row == 'D') rowPrice = 4;
+    switch(row){
+      case 'A':
+        rowPrice = 1;
+        break;
+      case 'B':
+        rowPrice = 2;
+        break;
+      case 'C':
+        rowPrice = 3;
+        break;
+      case 'D':
+        rowPrice = 4;
+        break;
+      default:
+        break;
+    } 
 
     return basePrice * rowPrice;
   }
