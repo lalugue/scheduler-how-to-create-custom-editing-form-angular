@@ -73,8 +73,7 @@ export class AppComponent {
         break;
       default:
         break;
-    } 
-
+    }
     return basePrice * rowPrice;
   }
 }
