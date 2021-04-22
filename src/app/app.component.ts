@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import notify from 'devextreme/ui/notify';
-import { Service, Data } from './app.service';
+import { Service, Data, EditData } from './app.service';
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { ViewChild } from '@angular/core';
 import { formatDate } from 'devextreme/localization';
@@ -17,8 +17,8 @@ export class AppComponent {
   data: Data[];
   currentDate: Date = new Date(2015, 4, 25);
 
-  isCustomPopupVisible: boolean = false;
-  editAppointmentData: any = {};
+  isCustomPopupVisible = false;
+  editAppointmentData: EditData = new EditData();
   rows: any;
   seats: any;  
 
@@ -32,7 +32,7 @@ export class AppComponent {
     this.updateAppointment = this.updateAppointment.bind(this);
   }
 
-  onAppointmentFormOpening(e){
+  onAppointmentFormOpening(e: any): void{
     e.cancel = true;
     this.editAppointmentData = { ...e.appointmentData };    
     if(this.editAppointmentData.id){
@@ -40,13 +40,13 @@ export class AppComponent {
     }
   }
 
-  onHiding(e){
-    this.editAppointmentData = {};
+  onHiding(e: any): void{
+    this.editAppointmentData = new EditData();
   }
 
-  updateAppointment(){
-    if(this.editAppointmentData.seatRow && this.editAppointmentData.seatNumber){
-      let oldAppointmentData = this.data.find(item=>item.id === this.editAppointmentData.id);
+  updateAppointment(): void{
+    if (this.editAppointmentData.seatRow && this.editAppointmentData.seatNumber){
+      const oldAppointmentData = this.data.find(item => item.id === this.editAppointmentData.id);
       this.scheduler.instance.updateAppointment(
         oldAppointmentData,
         this.editAppointmentData
@@ -56,9 +56,9 @@ export class AppComponent {
     this.isCustomPopupVisible = false;
   }
 
-  setSeatPrice(basePrice, row) {
-    let rowPrice;
-    switch(row){
+  setSeatPrice(basePrice: number, row: string): number {
+    let rowPrice: number;
+    switch (row){
       case 'A':
         rowPrice = 1;
         break;
