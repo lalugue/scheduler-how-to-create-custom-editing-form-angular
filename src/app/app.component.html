@@ -40,8 +40,6 @@
           {{ formatDate(editAppointmentData.endDate, "shortTime") }}</b>
       </div>
 
-      <br />
-
       <div class="dx-field-label"><b>Price ($): </b></div>
       <div id="priceView" class="dx-field-label">
         {{
@@ -52,9 +50,7 @@
               )
             : "Pick a seat for pricing"
         }}
-      </div>
-
-      <br /><br />
+      </div>      
 
       <dx-select-box
         id="rowView"
@@ -65,8 +61,6 @@
         [(value)]="editAppointmentData.seatRow">
       </dx-select-box>
 
-      <br /><br />
-
       <dx-select-box
         id="seatView"
         class="dx-field-label"
@@ -76,7 +70,6 @@
         [(value)]="editAppointmentData.seatNumber">
       </dx-select-box>
 
-      <br /><br />
     </dx-scroll-view>
   </div>
 
