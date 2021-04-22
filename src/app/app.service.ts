@@ -12,7 +12,12 @@ export class Data {
   duration: number;
 }
 
-let data: Data[] = [
+export class EditData extends Data {
+  seatRow: string;
+  seatNumber: number;
+}
+
+const data: Data[] = [
   {
     id: 1,
     price: 10,
@@ -57,11 +62,11 @@ export class Service {
     return data;
   }
 
-  getRows() {
+  getRows(): string[] {
     return ['A', 'B', 'C', 'D'];
   }
 
-  getSeats() {
+  getSeats(): number[] {
     return [1, 2, 3, 4, 5];
   }
 }
